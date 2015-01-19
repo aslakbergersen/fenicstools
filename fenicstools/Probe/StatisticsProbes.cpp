@@ -22,6 +22,8 @@ StatisticsProbes::StatisticsProbes(const Array<double>& x, const FunctionSpace& 
   // Symmetric statistics. Velocity: u, v, w, uu, vv, ww, uv, uw, vw
   _value_size = _value_size*(_value_size+3)/2.;
 
+  cout << "Starting to make probes" << MPI::rank(mpi_comm) << endl;
+
   for (std::size_t i=0; i<N; i++)
   {
     for (std::size_t j=0; j<Nd; j++)
@@ -36,6 +38,8 @@ StatisticsProbes::StatisticsProbes(const Array<double>& x, const FunctionSpace& 
     { // do-nothing
     }
   }
+
+  cout << "Done making probes " << MPI::rank(mpi_comm) << endl;
   //cout << local_size() << " of " << N  << " probes found on processor " << MPI::process_number() << endl;
 }
 //
